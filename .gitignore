@@ -1,0 +1,5 @@
+dataset/*.csv
+dataset/*.csv.*
+__pycache__
+website/index.html
+**/.terraform
