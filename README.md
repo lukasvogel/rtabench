@@ -58,7 +58,7 @@ RTABench evaluates databases that are commonly used for real-time analytics insi
 - General-Purpose Databases: A transactional database that can handle many use cases and used as the primary database for an application. Most general-purpose databases, like PostgreSQL and MySQL, are capable of handling real-time analytics depending on scale and performance requirements
 - Real-Time Analytics: A database optimized for real-time analytics with support for high ingest throughput, making data instantly available, fast analytical queries and high concurrency. Specialized real-time analytics databases are often used as a secondary database for an application.
 - Batch Analytics Databases: These databases are optimized for large-scale historical analysis and batch processing, excelling at ad-hoc queries on static datasets rather than real-time, continuously updated data.
-Although **Batch analytics databases are not designed for real-time analytics**, we have included them in RTABench for developers interested in comparing their performance. These databases are optimized for large-scale historical analysis and batch processing, excelling at ad-hoc queries on static datasets rather than real-time, continuously updated data.
+Although **Batch analytics databases are not designed for real-time analytics**, we have included them in RTABench for developers interested in comparing their performance.
 Because these databases cannot serve real-time analytics, they are not the focus of this benchmark. **Their results are not shown by default**, as the benchmark is not targeted at them.
 It’s possible for a database to fall into multiple categories based on their capabilities.
 
