@@ -32,7 +32,7 @@ sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
 sudo bash -c 'echo "deb https://packagecloud.io/timescale/timescaledb/ubuntu/ $(lsb_release -c -s) main" > /etc/apt/sources.list.d/timescaledb.list'
 wget --quiet -O - https://packagecloud.io/timescale/timescaledb/gpgkey | sudo apt-key add -
 sudo apt-get update
-sudo apt install -y postgresql-client-16 timescaledb-tools
+sudo apt install -y postgresql-client-17 timescaledb-tools
 
 #install terraform
 wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
