@@ -16,7 +16,7 @@ CREATE TABLE customers
     state text,
     country text,
 ) duplicate key (customer_id)
-distributed BY hash(customer_id) buckets 32
+distributed BY hash(customer_id) buckets 16
 properties("replication_num" = "1");
 
 CREATE TABLE products
@@ -28,7 +28,7 @@ CREATE TABLE products
     price decimal(10,2),
     stock int,
 ) duplicate key (product_id)
-distributed BY hash(product_id) buckets 32
+distributed BY hash(product_id) buckets 16
 properties("replication_num" = "1");
 
 CREATE TABLE orders
@@ -37,7 +37,7 @@ CREATE TABLE orders
     customer_id integer not null,
     created_at datetime not null,
 ) duplicate key (order_id, customer_id, created_at)
-distributed BY hash(order_id, customer_id, created_at) buckets 32
+distributed BY hash(order_id, customer_id, created_at) buckets 16
 properties("replication_num" = "1");
 
 CREATE TABLE order_items
@@ -46,20 +46,22 @@ CREATE TABLE order_items
     product_id integer not null,
     amount integer not null,
 ) duplicate key (order_id, product_id)
-distributed BY hash(order_id, product_id) buckets 32
+distributed BY hash(order_id, product_id) buckets 16
 properties("replication_num" = "1");
 
 CREATE TABLE order_events
 (
-    order_id         integer   not null,
     event_created    datetime not null,
+    order_id         integer   not null,
     counter          integer,
     event_type       text      not null,
     satisfaction     Float      not null,
     processor        text      not null,
     backup_processor text,
     event_payload    variant not null,
-    INDEX idx_var (`event_payload`) USING INVERTED
-) duplicate key (order_id, event_created)
-distributed BY hash(order_id, event_created) buckets 32
+    INDEX idx_var (`event_payload`) USING INVERTED,
+    INDEX idx_order_id (`order_id`) USING INVERTED,
+    INDEX idx_event_type (`event_type`) USING INVERTED
+) duplicate key (event_created, order_id)
+distributed BY hash(order_id) buckets 16
 properties("replication_num" = "1");
