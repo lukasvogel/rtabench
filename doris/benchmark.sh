@@ -57,5 +57,6 @@ cat log.txt |
   awk '{ if ($2) { print $1 * 60 + $2 } else { print $1 } }' |
   awk '{ if (i % 3 == 0) { printf "[" }; printf $1; if (i % 3 != 2) { printf "," } else { print "]," }; ++i; }' #results
 
-echo "General Purpose" #tag
+echo "Real-time Analytics" #tag
+echo "Batch Analytics" #tag
 echo "Doris" #name
